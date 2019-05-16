@@ -1,4 +1,5 @@
 import { Component, OnInit, NgModule } from '@angular/core';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,11 @@ import { Component, OnInit, NgModule } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+
+  sticky = 'false';
+  stickyval: any;
+
   customOptions: any = {
     items: 1,
     center: true,
@@ -34,9 +40,9 @@ export class HomeComponent implements OnInit {
 
   constructor() {
     this.slidesStore = [
-      {src: 'assets/images/Slide13.jpg', id: '1', alt: 'image1', title: 'Your health is always in the first place'},
-      {src: 'assets/images/Slide31.jpg', id: '2', alt: 'image2', title: 'title2'},
-      {src: 'assets/images/slider2-new.jpg', id: '3', alt: 'image3', title: 'title3'},
+      {src: 'assets/images/Slide13.jpg', id: '1', alt: 'image1', title: 'Stop battling your pain. You need physiotherapy'},
+      {src: 'assets/images/Slide31.jpg', id: '2', alt: 'image2', title: 'Recovery is not easy but worth it'},
+
     ];
 
     this.slidesTestimony = [
@@ -50,20 +56,40 @@ export class HomeComponent implements OnInit {
     ];
 
     this.productStore = [
-      {src: 'assets/images/product1.png', id: '1', alt: 'Product 1', title: 'Product 1'},
-      {src: 'assets/images/product2.png', id: '2', alt: 'Product 2', title: 'Product 2'},
-      {src: 'assets/images/product3.png', id: '3', alt: 'Product 3', title: 'Product 3'},
-      {src: 'assets/images/product4.png', id: '4', alt: 'Product 4', title: 'Product 4'},
-      {src: 'assets/images/product5.png', id: '5', alt: 'Product 5', title: 'Product 5'},
-      {src: 'assets/images/product6.png', id: '6', alt: 'Product 6', title: 'Product 6'},
-      {src: 'assets/images/product7.png', id: '7', alt: 'Product 7', title: 'Product 7'},
-      {src: 'assets/images/product8.png', id: '8', alt: 'Product 8', title: 'Product 8'},
-      {src: 'assets/images/product9.png', id: '9', alt: 'Product 9', title: 'Product 9'},
-      {src: 'assets/images/product10.png', id: '10', alt: 'Product 10', title: 'Product 10'},
+      {src: 'assets/images/medirub-100.png', id: '1', alt: 'MEDIRUB 100G', title: 'MEDIRUB 100G'},
+      {src: 'assets/images/medirub-250.png', id: '2', alt: 'MEDIRUB 250G', title: 'MEDIRUB 250G'},
+      {src: 'assets/images/thera-band.png', id: '3', alt: 'THERA-BAND', title: 'THERA-BAND'},
+      {src: 'assets/images/emu-oil.png', id: '4', alt: 'EMU OIL', title: 'EMU OIL'},
+      {src: 'assets/images/rock-tape.png', id: '5', alt: 'ROCK TAPE', title: 'ROCK TAPE'},
+      {src: 'assets/images/repair-gel.png', id: '6', alt: 'REPAIR GEL', title: 'REPAIR GEL'},
+      
     ];
+
+
 
   }
   ngOnInit() {
+    const navbar = document.getElementById('myTopnav');
+    this.stickyval = navbar.offsetTop;
+
+    console.log(' height ' + this.stickyval);
+  }
+
+
+
+  @HostListener('window:scroll', ['$event']) // for window scroll events
+  onScroll(event) {
+    // console.log("scrolling" + event);
+    const verticalOffset = window.pageYOffset;
+    console.log('scrolling' + verticalOffset);
+
+    if (verticalOffset >= this.stickyval) {
+      console.log('iam sticky ');
+      this.sticky = 'true';
+    } else {
+      console.log('iam NON sticky ');
+      this.sticky = 'false';
+    }
   }
 
   scroll(el: HTMLElement) {
@@ -78,6 +104,15 @@ appointment() {
 changeCountry(val) {
 
   this.country = val;
+}
+
+myFunction() {
+  const x = document.getElementById('myTopnav');
+  if (x.className === 'topnav') {
+    x.className += ' responsive';
+  } else {
+    x.className = 'topnav';
+  }
 }
 
 }

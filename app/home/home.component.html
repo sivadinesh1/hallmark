@@ -2,7 +2,8 @@
 
   <div class="header-info">
     <div class="header-info1">
-      <img src="../../assets/images/logo.png">
+      &nbsp;
+
     </div>
     <div class="header-info2">
       <div>
@@ -11,7 +12,7 @@
       </div>
       <div class="phone contact-block">
 
-        <i class="fas fa-address-card fa-2x"></i>
+        <i class="fas fa-address-card fa-lg"></i>
       </div>
     </div>
     <div class="header-info3">
@@ -27,48 +28,30 @@
 
       <div class="location contact-block">
 
-        <i class="fas fa-map-marker-alt fa-2x"></i>
+        <i class="fas fa-map-marker-alt fa-lg"></i>
       </div>
 
     </div>
-  </div>
+    <div class="header-info4">
+      &nbsp;&nbsp;
+      <span class="menu-box-f">
+        <select #t (change)="changeCountry(t.value)">
+          <option value="sg">Singapore</option>
+          <option value="my">Myanmar</option>
 
-  <div class="menu-row">
-
-    <span class="menu-box">
-      Home
-    </span>
-    <span class="menu-box" (click)="scroll(aboutus)">
-      About us
-    </span>
-    <span class="menu-box" (click)="scroll(team)">
-      Team
-    </span>
-    <span class="menu-box" (click)="scroll(whatwedo)">
-      What we do
-    </span>
-    <span class="menu-box" (click)="scroll(target)">
-      Testimonials
-    </span>
-    <span class="menu-box" (click)="scroll(products)">
-      Products
-    </span>
-    <span class="menu-box-f">
-
-      <select #t (change)="changeCountry(t.value)">
-        <option value="sg">Singapore</option>
-        <option value="my">Myanmar</option>
-
-      </select>
-
-
-    </span>
-    <span class="menu-box">
-      Contact Us
-    </span>
+        </select>
+      </span>
 
 
 
+    </div>
+
+    <div class="header-info5">
+
+      <div><img src="../../assets/images/facebook.png " alt="facebook"></div>
+      <div><img src="../../assets/images/instagram.png " alt="instagram"></div>
+      <div><img src="../../assets/images/twitter.png " alt="twitter"></div>
+    </div>
 
   </div>
 
@@ -77,7 +60,21 @@
 
 
 
-<div class="slide-show">
+
+<div class="topnav" id="myTopnav" [ngClass]="{'sticky':sticky === 'true' }">
+  <a href="#home" class="active"> <img src="../../assets/images/logo-menu.jpg"></a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+
+
+  <a href="javascript:void(0);" class="icon" (click)="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+
+<div class="slide-show sticky-menu">
 
   <owl-carousel-o [options]="customOptions">
 
@@ -88,23 +85,9 @@
 
         <div *ngIf="slide.id === '1' ">
           <div class="caption">
+            Stop battling your pain. <strong>You need physiotherapy</strong>
 
 
-            Your Health <strong>is always
-              in the first place</strong>
-
-            <div class="caption-second w3-container w3-center w3-animate-top">
-              <div class="txt">
-                Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-              </div>
-            </div>
-
-            <div class="caption-third">
-
-              <button class="w3-button w3-green w3-round-xxlarge appoint" (click)="appointment()">
-                MAKE AN APPOINTMENT
-              </button>
-            </div>
 
           </div>
 
@@ -113,53 +96,17 @@
         <div *ngIf="slide.id === '2' ">
           <div class="caption">
 
-
-            Your Health <strong>is always
-              in the second place</strong>
-
-            <div class="caption-second ">
-              <div>
-                Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-              </div>
-            </div>
-
-            <div class="caption-third">
-
-              <button class="w3-button w3-green w3-round-xxlarge appoint" (click)="appointment()">
-                MAKE AN APPOINTMENT
-              </button>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div *ngIf="slide.id === '3' ">
-          <div class="caption">
+            Recovery is not easy but <strong>worth it</strong>
 
 
-            Your Health <strong>is always
-              in the third place</strong>
 
-            <div class="caption-second ">
-              <div>
-                Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-              </div>
-            </div>
-
-            <div class="caption-third">
-
-              <button class="w3-button w3-green w3-round-xxlarge appoint" (click)="appointment()">
-                MAKE AN APPOINTMENT
-              </button>
-            </div>
 
           </div>
 
         </div>
 
 
-        <!-- <div class="centered">{{slide.title}}</div> -->
+
 
       </ng-template>
 
@@ -175,33 +122,24 @@
 
     <div class="item1">
       <div class="left-item1">
-        <i class="fas fa-address-card fa-lg"></i>
+
+        <img src="../../assets/images/worldwide.png " alt="rehabilitation">
+
       </div>
       <div class="right-item1">
         4245
       </div>
       <div class="desc-item1">
-        Satisfied Customer
+        Global Patients
       </div>
 
     </div>
 
-    <div class="item1">
-      <div class="left-item1">
-        <i class="fas fa-address-card fa-lg"></i>
-      </div>
-      <div class="right-item1">
-        12
-      </div>
-      <div class="desc-item1">
-        Hospitals
-      </div>
 
-    </div>
 
     <div class="item1">
       <div class="left-item1">
-        <i class="fas fa-address-card fa-lg"></i>
+        <img src="../../assets/images/physiotherapy.png " alt="physiotherapy">
       </div>
       <div class="right-item1">
         10
@@ -214,7 +152,7 @@
 
     <div class="item1">
       <div class="left-item1">
-        <i class="fas fa-address-card fa-lg"></i>
+        <img src="../../assets/images/flag.png " alt="flag">
       </div>
       <div class="right-item1">
         3
@@ -232,71 +170,8 @@
 
 </div>
 
-<div class="our-services" data-aos="fade-in">
-  <div class="row1">
-    <div class="item1">
-      <span class="icon">
-        <img src="../../assets/images/rehabilitation-2.png " alt="Avatar" width="64px" height="64px">
 
-      </span>
-      Diagnostics and emergency treatment</div>
-    <div class="item2">
-      <span class="icon">
-
-        <img src="../../assets/images/chiropractic.png " alt="Avatar" width="64px" height="64px">
-      </span>
-      Chiropractic</div>
-    <div class="item3"> <span class="icon">
-
-
-        <img src="../../assets/images/rehabilitation.png " alt="Avatar" width="64px" height="64px">
-      </span>
-      Rehabilitation Services</div>
-    <div class="item4">
-      Comprehensive services for our patients</div>
-
-  </div>
-  <div class="row2">
-    <div class="item1"> <span class="icon">
-        <img src="../../assets/images/rehabilitation-3.png " alt="Avatar" width="64px" height="64px">
-      </span>
-      Long term medical care in a hospital</div>
-    <div class="item2"> <span class="icon">
-        <img src="../../assets/images/stationary-bike.png " alt="Avatar" width="64px" height="64px">
-      </span>
-      The correct diagnosis is half the battle</div>
-    <div class="item3">
-      <span class="desc">
-        MISSION
-      </span>
-
-      We refund 50% of the cost of medicines</div>
-    <div class="item4"> <span class="icon">
-        <img src="../../assets/images/slippers.png " alt="Avatar" width="64px" height="64px">
-      </span>
-      A specialized laboratory research</div>
-    <div class="item5"> <span class="icon">
-        <img src="../../assets/images/exercise-ball.png " alt="Avatar" width="64px" height="64px">
-      </span>
-      Medical transport to the hospital</div>
-  </div>
-  <div class="row3">
-    <div class="item1"> &nbsp; </div>
-    <div class="item2"> <span class="icon">
-        <img src="../../assets/images/knee.png " alt="Avatar" width="64px" height="64px">
-      </span>
-      Home medical appointments</div>
-    <div class="item3">
-      Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-      texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-    </div>
-  </div>
-
-</div>
-
-
-
-
+<!-- 
 <div class="our-doctors" #team>
   <div class="row1">
     <div class="head">
@@ -339,7 +214,7 @@
   </div>
 
 </div>
-
+ -->
 
 
 
@@ -362,40 +237,61 @@
     </div>
   </div>
 
-  <div >
-      <div class="head-founder">Message from the Founder</div>
+  <!-- <div>
+    <div class="head-founder">Message from the Founder</div>
+  </div> -->
+  <!-- <div class="row0">
+    <div class="about-desc-founder">
+      Hallmark Physiotherapy has come a long way in establishing our brand and prestige in the wellness and healthcare
+      services. We are committed to continue in our strive to provide value-added services and care to our clients, and
+      we aim to become the preferred service provider in the industry.
+      <br>
+      We valued our brand, employees and all the other stakeholders that have supported Hallmark Physiotherapy in its
+      drive to become the preferred choice for all customers, doctors, hospitals and clinics etc.
+      <br>
+      Please join us in this adventure to explore the unlimited opportunities and endeavor to grow this brand and
+      franchise so that more people are able to experience the unique services and lasting treatment that will enable
+      patients to recover and return to a fulfilling and wholesome life that they endeavor to have.
     </div>
-    <div class="row0">
-      <div class="about-desc-founder">
-          Hallmark Physiotherapy has come a long way in establishing our brand and prestige in the wellness and healthcare services. We are committed to continue in our strive to provide value-added services and care to our clients, and we aim to become the preferred service provider in the industry.
-          <br>
-          We valued our brand, employees and all the other stakeholders that have supported Hallmark Physiotherapy in its drive to become the preferred choice for all customers, doctors, hospitals and clinics etc.
-          <br>
-          Please join us in this adventure to explore the unlimited opportunities and endeavor to grow this brand and franchise so that more people are able to experience the unique services and lasting treatment that will enable patients to recover and return to a fulfilling and wholesome life that they endeavor to have.
-      </div>
-    </div>
+  </div> -->
 
 
 
   <div class="row2">
     <div class="aboutus-left-side">
-      Being in the field of physiotherapy for 15 years, we know what is required to become a better Health care
-      Professional. Health care Professionals who just graduated will be lacking in experience in operating and Managing
-      the Business. By opening this academy, we aim to train the Health care Professionals to be successful
-      Entrepreneurs.
-
+      <div class="head-founder">Message from the Founder</div>
+      Hallmark Physiotherapy has come a long way in establishing our brand and prestige in the wellness and healthcare
+      services. We are committed to continue in our strive to provide value-added services and care to our clients, and
+      we aim to become the preferred service provider in the industry.
       <br>
+      We valued our brand, employees and all the other stakeholders that have supported Hallmark Physiotherapy in its
+      drive to become the preferred choice for all customers, doctors, hospitals and clinics etc.
       <br>
-      <div class="wrap-10">
-        <input type="radio" id="tab-10" name="tabs">
-        <label for="tab-10">
-          <div class="left-align">Key Values</div>
-          <div class="cross"></div>
-        </label>
-        <div class="aboutus-content">
+      Please join us in this adventure to explore the unlimited opportunities and endeavor to grow this brand and
+      franchise so that more people are able to experience the unique services and lasting treatment that will enable
+      patients to recover and return to a fulfilling and wholesome life that they endeavor to have.
+     
 
-          <div class="left-align">
+    </div>
+    <div class="aboutus-right-side">
+      <div class="award">
+        Appreciation Award
+      </div>
+      <div class="award-desc">
+        Proudly awarded to Hallmark Physiotherapy Pte Ltd for having demonstrated exceptional accomplishments in
+        business field.
+      </div>
 
+      <div class="award-img">
+        <img src="../../assets/images/award2.png " alt="Avatar">
+      </div>
+    </div>
+  </div>
+
+  <div class="row2">
+    <div class="aboutus-left-side">
+        <div class="left-align">
+            <div class="left-align">Key Values</div>
 
             <ul class="a">
               <li>
@@ -418,100 +314,28 @@
             </ul>
 
           </div>
-
-
-        </div>
-      </div>
-
-
-      <div class="wrap-11">
-        <input type="radio" id="tab-11" name="tabs">
-        <label for="tab-11">
-          <div class="left-align">Vision</div>
-          <div class="cross"></div>
-        </label>
-        <div class="aboutus-content">
-
-          <div class="left-align">
+    </div>
+    <div class="aboutus-right-side">
+        <div class="left-align">
+          MISSION
             To develop into Singapore’s premier Physiotherapy, Exercise & Sport science facility that is committed to
             the enhancement of the health and functional performance of all of our clients, with the use of
             evidence-based practices and utmost professionalism.
+
+
+         VISION
+            To provide a holistic health and fitness conditioning service which enhances the quality of life and
+            functional performance of the general population and individuals with specialized goals. We differentiate
+            ourselves by ensuring that our treatments are designed and delivered by highly qualified and experienced
+            health and fitness professionals.
+
           </div>
-
-
-        </div>
       </div>
-
-      <div class="wrap-12">
-        <input type="radio" id="tab-12" name="tabs">
-        <label for="tab-12">
-          <div class="left-align">Values</div>
-          <div class="cross"></div>
-        </label>
-        <div class="aboutus-content">
-
-          To provide a holistic health and fitness conditioning service which enhances the quality of life and
-          functional performance of the general population and individuals with specialized goals. We differentiate
-          ourselves by ensuring that our treatments are designed and delivered by highly qualified and experienced
-          health and fitness professionals.
-
-        </div>
-      </div>
-
-    </div>
-    <div class="aboutus-right-side">
-      <div class="award">
-        Appreciation Award
-      </div>
-      <div class="award-desc">
-        Proudly awarded to Hallmark Physiotherapy Pte Ltd for having demonstrated exceptional accomplishments in
-        business field.
-      </div>
-
-      <div class="award-img">
-        <img src="../../assets/images/award2.png " alt="Avatar">
-      </div>
-    </div>
   </div>
 
 </div>
 
-<div class="testimonials" #target>
 
-  <div class="slide-show">
-    <div class="test-head">
-      Our patients and their opinions
-    </div>
-
-    <owl-carousel-o [options]="customOptions">
-
-      <ng-container *ngFor="let slide of slidesTestimony">
-        <ng-template carouselSlide [id]="slide.id">
-          <div class="testimonial-slide">
-            <p class="client-name"> {{slide.client}}</p>
-            <div class="testi-desc">{{slide.title}}</div>
-            <div class="client-name">
-              <span class="fas fa-star fa-xs checked"></span>
-              <span class="fas fa-star fa-xs checked"></span>
-              <span class="fas fa-star fa-xs checked"></span>
-              <span class="fas fa-star fa-xs checked"></span>
-              <span class="fas fa-star fa-xs checked"></span>
-            </div>
-
-          </div>
-
-
-
-
-
-        </ng-template>
-
-      </ng-container>
-
-    </owl-carousel-o>
-
-  </div>
-</div>
 
 
 <div class="what-we-do" #whatwedo>
@@ -522,7 +346,7 @@
     Treatments we do in Hallmark Physiotherapy
   </div>
   <div class="wrap-1">
-    <input type="radio" id="tab-1" name="tabs">
+    <input type="checkbox" id="tab-1" name="tabs">
     <label for="tab-1">
       <div class="left-align">Manual therapy </div>
       <div class="cross"></div>
@@ -566,7 +390,7 @@
   </div>
 
   <div class="wrap-2">
-    <input type="radio" id="tab-2" name="tabs">
+    <input type="checkbox" id="tab-2" name="tabs">
     <label for="tab-2">
       <div class="left-align">Ultrasound</div>
       <div class="cross"></div>
@@ -600,7 +424,7 @@
 
 
   <div class="wrap-3">
-    <input type="radio" id="tab-3" name="tabs">
+    <input type="checkbox" id="tab-3" name="tabs">
     <label for="tab-3">
       <div class="left-align">Interferential therapy</div>
       <div class="cross"></div>
@@ -640,7 +464,7 @@
 
 
   <div class="wrap-4">
-    <input type="radio" id="tab-4" name="tabs">
+    <input type="checkbox" id="tab-4" name="tabs">
     <label for="tab-4">
       <div class="left-align">Cryotherapy</div>
       <div class="cross"></div>
@@ -679,7 +503,7 @@
 
 
   <div class="wrap-5">
-    <input type="radio" id="tab-5" name="tabs">
+    <input type="checkbox" id="tab-5" name="tabs">
     <label for="tab-5">
       <div class="left-align">Mechanical traction</div>
       <div class="cross"></div>
@@ -718,7 +542,7 @@
 
 
   <div class="wrap-6">
-    <input type="radio" id="tab-6" name="tabs">
+    <input type="checkbox" id="tab-6" name="tabs">
     <label for="tab-6">
       <div class="left-align">Aqua Jogging</div>
       <div class="cross"></div>
@@ -758,7 +582,7 @@
 
 
   <div class="wrap-7">
-    <input type="radio" id="tab-7" name="tabs">
+    <input type="checkbox" id="tab-7" name="tabs">
     <label for="tab-7">
       <div class="left-align">Therapeutic Taping/ Kinesio Tape</div>
       <div class="cross"></div>
@@ -804,7 +628,7 @@
   </div>
 
   <div class="wrap-8">
-    <input type="radio" id="tab-8" name="tabs">
+    <input type="checkbox" id="tab-8" name="tabs">
     <label for="tab-8">
       <div class="left-align">Insole</div>
       <div class="cross"></div>
@@ -850,55 +674,76 @@
     </div>
   </div>
 
-
-
-</div>
-
-
-
-
-
-<div class="what-we-do">
-  <div class="head">
-    FITNESS
-  </div>
-  <div class="head-caption">
-    Fitness theraphy we do in Hallmark Physiotherapy
-  </div>
   <div class="wrap-9">
-    <input type="radio" id="tab-9" name="tabs">
-    <label for="tab-9">
-      <div class="left-align">FITNESS </div>
-      <div class="cross"></div>
-    </label>
-    <div class="content">
-      <div class="img">
-        <img src="../../assets/images/fitness.png " alt="Avatar" style="width:100%">
+      <input type="checkbox" id="tab-9" name="tabs">
+      <label for="tab-9">
+        <div class="left-align">FITNESS </div>
+        <div class="cross"></div>
+      </label>
+      <div class="content">
+        <div class="img">
+          <img src="../../assets/images/fitness.png " alt="Avatar" style="width:100%">
+        </div>
+        <div class="left-align">
+  
+          <ul class="a">
+            <li>
+              The Hallmark Physiotherapy is able to provide a comprehensive and individually tailored health and fitness
+              service to our clients due to the expertise and knowledge-base of our staff.
+            </li>
+            <li>
+              Our programs will be designed based on up-to-date evidence-based practices combined with the most
+              professionalism.
+            </li>
+            <li>
+              Clients will also be able to select between individual or corporate training packages with us.
+            </li>
+  
+          </ul>
+        </div>
+  
+  
       </div>
-      <div class="left-align">
-
-        <ul class="a">
-          <li>
-            The Hallmark Physiotherapy is able to provide a comprehensive and individually tailored health and fitness
-            service to our clients due to the expertise and knowledge-base of our staff.
-          </li>
-          <li>
-            Our programs will be designed based on up-to-date evidence-based practices combined with the most
-            professionalism.
-          </li>
-          <li>
-            Clients will also be able to select between individual or corporate training packages with us.
-          </li>
-
-        </ul>
-      </div>
-
-
     </div>
-  </div>
-
 
 </div>
+
+
+
+
+<div  #target>
+
+    <div class="slide-show">
+    <div class="test-head">
+       Testimonials
+     </div>
+ 
+ 
+    
+ 
+     <owl-carousel-o [options]="customOptions">
+ 
+       <ng-container *ngFor="let slide of slidesTestimony">
+         <ng-template carouselSlide [id]="slide.id">
+           <div class="testimonial-slide">
+ 
+             <blockquote><p class="quotation"> 
+                 {{slide.title}}</p>
+               <footer>— {{slide.client}}</footer>
+               </blockquote> 
+ 
+           </div>
+ 
+ 
+         </ng-template>
+ 
+       </ng-container>
+ 
+     </owl-carousel-o>
+ 
+   </div>
+ </div>
+
 
 
 <div class="products" #products>
@@ -913,18 +758,18 @@
 
   </div>
 
-  <div class="row">
-    <div class="column" *ngFor="let slide of productStore">
-      <div class="card">
+  
+    
+      <div class="card" *ngFor="let slide of productStore">
         <h3>{{slide.title}}</h3>
         <img src={{slide.src}} alt="{{slide.alt}}" style="width:100%">
-        <p>{{slide.title}}</p>
-        <p>{{slide.title}}</p>
+        <p class="enquiry">Send Enquiry</p>
+        
       </div>
-    </div>
+    
 
 
-  </div>
+  
 </div>
 
 
