@@ -1,36 +1,37 @@
 <div class="header" #top>
-
   <div class="header-info">
     <div class="header-info1">
       &nbsp;
-
     </div>
     <div class="header-info2">
-      <div>
-        <div class="phone">(+65) 6258 8707 </div>
-        <div class="phone contact-block1">sales@hallmarkphysio.com </div>
-      </div>
-      <div class="phone contact-block">
+      <div *ngIf="country === 'sg'">
+        <div class="phone">(+65) 6258 8707</div>
+        <div class="phone contact-block1">sales@hallmarkphysio.com</div>
+          </div>
 
+      <div *ngIf="country === 'my'">
+        <div class="phone">(+95) 9453774354</div>
+        <div class="phone contact-block1">sales.mmr@hallmarkphysio.com</div>
+      </div>
+
+      <div class="phone contact-block">
         <i class="fas fa-address-card fa-lg"></i>
       </div>
     </div>
     <div class="header-info3">
-      <div *ngIf="country === 'sg' ">
-        <div class="location"> 320 Thomson Road, </div>
-        <div class="location">Singapore 307663 </div>
+      <div *ngIf="country === 'sg'">
+        <div class="location">320 Thomson Road,</div>
+        <div class="location">Singapore 307663</div>
       </div>
 
-      <div *ngIf="country === 'my' ">
-        <div class="location"> 290 D4, Uwisara Road, </div>
-        <div class="location">Kamaryut Township, Yangon, Myanmar </div>
+      <div *ngIf="country === 'my'">
+        <div class="location">290 D4, Uwisara Road,</div>
+        <div class="location">Kamaryut Township, Yangon, Myanmar</div>
       </div>
 
       <div class="location contact-block">
-
         <i class="fas fa-map-marker-alt fa-lg"></i>
       </div>
-
     </div>
     <div class="header-info4">
       &nbsp;&nbsp;
@@ -38,34 +39,64 @@
         <select #t (change)="changeCountry(t.value)">
           <option value="sg">Singapore</option>
           <option value="my">Myanmar</option>
-
         </select>
       </span>
-
-
-
     </div>
 
     <div class="header-info5">
-
-      <div><img src="../../assets/images/facebook.png " alt="facebook"></div>
-      <div><img src="../../assets/images/instagram.png " alt="instagram"></div>
-      <div><img src="../../assets/images/twitter.png " alt="twitter"></div>
+      <div><img src="../../assets/images/facebook.png " alt="facebook" /></div>
+      <div>
+        <img src="../../assets/images/instagram.png " alt="instagram" />
+      </div>
+      <div><img src="../../assets/images/twitter.png " alt="twitter" /></div>
     </div>
-
   </div>
-
-
 </div>
 
+<div class="topnav" id="myTopnav" [ngClass]="{ sticky: sticky === 'true' }">
+  <a href="#home" class="active" (click)="scroll(top, 'home')">
+    <img src="../../assets/images/logo-menu.jpg"
+  /></a>
 
+  <a
+    (click)="scroll(contactus, 'contactus')"
+    class="topnav-style menu right-gap"
+    [ngClass]="{ activemenu: currentClickedMenu === 'contactus' }"
+    style="cursor: pointer;"
+    >Contact Us</a
+  >
 
+  <a
+    (click)="scroll(products, 'products')"
+    class="topnav-style menu"
+    [ngClass]="{ activemenu: currentClickedMenu === 'products' }"
+    style="cursor: pointer;"
+    >Products</a
+  >
 
-<div class="topnav" id="myTopnav" [ngClass]="{'sticky':sticky === 'true' }">
-  <a href="#home" class="active"> <img src="../../assets/images/logo-menu.jpg"></a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
+  <a
+    (click)="scroll(testimonials, 'testimonials')"
+    class="topnav-style menu"
+    [ngClass]="{ activemenu: currentClickedMenu === 'testimonials' }"
+    style="cursor: pointer;"
+    >Testimonials</a
+  >
+
+  <a
+    (click)="scroll(whatwedo, 'whatwedo')"
+    [ngClass]="{ activemenu: currentClickedMenu === 'whatwedo' }"
+    class="topnav-style menu"
+    style="cursor: pointer;"
+    >What We Do</a
+  >
+
+  <a
+    (click)="scroll(aboutus, 'aboutus')"
+    [ngClass]="{ activemenu: currentClickedMenu === 'aboutus' }"
+    class="topnav-style menu"
+    style="cursor: pointer;"
+    >About Us</a
+  >
 
 
   <a href="javascript:void(0);" class="icon" (click)="myFunction()">
@@ -73,272 +104,212 @@
   </a>
 </div>
 
-
 <div class="slide-show sticky-menu">
-
   <owl-carousel-o [options]="customOptions">
-
     <ng-container *ngFor="let slide of slidesStore">
       <ng-template carouselSlide [id]="slide.id">
+        <img [src]="slide.src" [alt]="slide.alt" [title]="slide.title" />
 
-        <img [src]="slide.src" [alt]="slide.alt" [title]="slide.title">
-
-        <div *ngIf="slide.id === '1' ">
+        <div *ngIf="slide.id === '1'">
           <div class="caption">
-            Stop battling your pain. <strong>You need physiotherapy</strong>
-
-
-
+            <strong>Stop battling your pain, you need physiotherapy!</strong>
+            <div>
+              <button class="w3-button w3-green w3-round-xxlarge appoint" (click)="appointment()">
+                Make an Appointment
+              </button>
+            </div>
           </div>
-
         </div>
 
-        <div *ngIf="slide.id === '2' ">
+        <div *ngIf="slide.id === '2'">
           <div class="caption">
-
-            Recovery is not easy but <strong>worth it</strong>
-
-
-
-
+            <strong>
+              Recovery is not easy but worth it!
+            </strong>
           </div>
-
         </div>
-
-
-
-
       </ng-template>
-
     </ng-container>
-
   </owl-carousel-o>
-
 </div>
 <div class="mid">
-
   <div class="stats">
     <div class="item0">&nbsp;</div>
 
     <div class="item1">
       <div class="left-item1">
-
-        <img src="../../assets/images/worldwide.png " alt="rehabilitation">
-
+        <img src="../../assets/images/worldwide.png " alt="rehabilitation" />
       </div>
       <div class="right-item1">
-        4245
+        7558
       </div>
       <div class="desc-item1">
         Global Patients
       </div>
-
     </div>
-
-
 
     <div class="item1">
       <div class="left-item1">
-        <img src="../../assets/images/physiotherapy.png " alt="physiotherapy">
+        <img src="../../assets/images/physiotherapy.png " alt="physiotherapy" />
       </div>
       <div class="right-item1">
-        10
+        5
       </div>
       <div class="desc-item1">
         Physiotherapists
       </div>
-
     </div>
 
     <div class="item1">
       <div class="left-item1">
-        <img src="../../assets/images/flag.png " alt="flag">
+        <img src="../../assets/images/flag.png " alt="flag" />
       </div>
       <div class="right-item1">
-        3
+        2
       </div>
       <div class="desc-item1">
         Countries
       </div>
-
     </div>
 
-
-    <div class="item5">&nbsp;</div>
-
+    <div class="item5" #aboutus>&nbsp;</div>
   </div>
-
 </div>
 
-
-<!-- 
-<div class="our-doctors" #team>
-  <div class="row1">
-    <div class="head">
-
-      Well Experienced Doctors
-
-
-    </div>
-    <div class="head-caption">
-      A small river named Duden flows by their place and supplies it with the necessary regelialia.
-    </div>
-
-
-
-  </div>
-  <div class="row2">
-    <div class="left-side">
-      <div class="doc-name">
-        V. Ravichandran<br>
-        <span class="post">Founder and Managing Partner of Hallmark Physiotherapy</span>
-      </div>
-      <div class="doc-qualification">
-        Director/ Senior Physiotherapist B.Sc. Physio., M.Sc., Musculoskeletal Physiotherapy (Australia)
-      </div>
-
-      <div class="info">
-        Since establishing in 2004, Ravi is a Singaporean Physiotherapist with 17 years of experience in private
-        practice. Ravi was the past Chairman of Ceylon Sports Club sport activity group having worked with a spectrum of
-        high level athletes including- cricketers, footballers, triathletes, cy
-      </div>
-
-
-
-
-
-    </div>
-    <div class="right-side">
-
-    </div>
-  </div>
-
-</div>
- -->
-
-
-
-<div class="about-us" #aboutus>
+<div class="about-us">
   <div class="row1">
     <div class="head">ABOUT US</div>
   </div>
   <div class="row0">
     <div class="about-desc">
-      Hallmark Physiotherapy is a dedicated physiotherapy clinic incorporated in April 2004 with an objective to provide
-      quality Physiotherapy services to a larger section of people. We specialize in musculoskeletal problems, sports
-      injuries and neurological disorders. Hallmark Physiotherapy is well-equipped to diagnose and treat patients. We
-      also have a team of passionate health and fitness professionals that are committed to helping our clients attain
-      their individual goals and realize their potential by using updated evidence-based methods of exercise
-      programming, training and testing.
-      <br>
-      Hallmark Physiotherapy has come a long way in establishing our brand and prestige in the wellness and healthcare
-      services. We are committed to continue in our strive to provide value-added services and care to our clients, and
-      we aim to become the preferred service provider in the industry.
+      Hallmark Physiotherapy is a dedicated physiotherapy clinic incorporated in
+      April 2004 with an objective to provide quality Physiotherapy services to
+      a larger section of people. We specialize in musculoskeletal problems,
+      sports injuries and neurological disorders. Hallmark Physiotherapy is
+      well-equipped to diagnose and treat patients. We also have a team of
+      passionate health and fitness professionals that are committed to helping
+      our clients attain their individual goals and realize their potential by
+      using updated evidence-based methods of exercise programming, training and
+      testing.
+      <br />
+      Hallmark Physiotherapy has come a long way in establishing our brand and
+      prestige in the wellness and healthcare services. We are committed to
+      continue in our strive to provide value-added services and care to our
+      clients, and we aim to become the preferred service provider in the
+      industry.
     </div>
   </div>
-
-  <!-- <div>
-    <div class="head-founder">Message from the Founder</div>
-  </div> -->
-  <!-- <div class="row0">
-    <div class="about-desc-founder">
-      Hallmark Physiotherapy has come a long way in establishing our brand and prestige in the wellness and healthcare
-      services. We are committed to continue in our strive to provide value-added services and care to our clients, and
-      we aim to become the preferred service provider in the industry.
-      <br>
-      We valued our brand, employees and all the other stakeholders that have supported Hallmark Physiotherapy in its
-      drive to become the preferred choice for all customers, doctors, hospitals and clinics etc.
-      <br>
-      Please join us in this adventure to explore the unlimited opportunities and endeavor to grow this brand and
-      franchise so that more people are able to experience the unique services and lasting treatment that will enable
-      patients to recover and return to a fulfilling and wholesome life that they endeavor to have.
-    </div>
-  </div> -->
-
-
 
   <div class="row2">
     <div class="aboutus-left-side">
       <div class="head-founder">Message from the Founder</div>
-      Hallmark Physiotherapy has come a long way in establishing our brand and prestige in the wellness and healthcare
-      services. We are committed to continue in our strive to provide value-added services and care to our clients, and
-      we aim to become the preferred service provider in the industry.
-      <br>
-      We valued our brand, employees and all the other stakeholders that have supported Hallmark Physiotherapy in its
-      drive to become the preferred choice for all customers, doctors, hospitals and clinics etc.
-      <br>
-      Please join us in this adventure to explore the unlimited opportunities and endeavor to grow this brand and
-      franchise so that more people are able to experience the unique services and lasting treatment that will enable
-      patients to recover and return to a fulfilling and wholesome life that they endeavor to have.
-     
-
+      Hallmark Physiotherapy has come a long way in establishing our brand and
+      prestige in the wellness and healthcare services. We are committed to
+      continue in our strive to provide value-added services and care to our
+      clients, and we aim to become the preferred service provider in the
+      industry.
+      <br />
+      We valued our brand, employees and all the other stakeholders that have
+      supported Hallmark Physiotherapy in its drive to become the preferred
+      choice for all customers, doctors, hospitals and clinics etc.
+      <br />
+      Please join us in this adventure to explore the unlimited opportunities
+      and endeavor to grow this brand and franchise so that more people are able
+      to experience the unique services and lasting treatment that will enable
+      patients to recover and return to a fulfilling and wholesome life that
+      they endeavor to have.
     </div>
     <div class="aboutus-right-side">
       <div class="award">
         Appreciation Award
       </div>
       <div class="award-desc">
-        Proudly awarded to Hallmark Physiotherapy Pte Ltd for having demonstrated exceptional accomplishments in
-        business field.
+        Proudly awarded to Hallmark Physiotherapy Pte Ltd for having
+        demonstrated exceptional accomplishments in business field.
       </div>
 
       <div class="award-img">
-        <img src="../../assets/images/award2.png " alt="Avatar">
+        <img src="../../assets/images/award2.png " alt="Avatar" width="100%" />
       </div>
     </div>
   </div>
 
   <div class="row2">
     <div class="aboutus-left-side">
-        <div class="left-align">
-            <div class="left-align">Key Values</div>
+      <div class="left-align">
+        <div class="award">Key Values</div>
 
-            <ul class="a">
-              <li>
-                To utilize evidence-based methods to design individually-tailored treatment programs to achieve the best
-                outcomes
-              </li>
-              <li>
-                To provide a professional, client-centered approach
-              </li>
-              <li>
-                To provide an efficient and effective service
-              </li>
-              <li>
-                To educate our clients to become independent and life-long exponents of health and fitness
-              </li>
-              <li>
-                To use a multi-disciplinary approach at addressing our clients’ needs
-              </li>
-
-            </ul>
-
-          </div>
+        <ul class="a">
+          <li>
+            To utilize evidence-based methods to design individually-tailored
+            treatment programs to achieve the best outcomes
+          </li>
+          <li>
+            To provide a professional, client-centered approach
+          </li>
+          <li>
+            To provide an efficient and effective service
+          </li>
+          <li>
+            To educate our clients to become independent and life-long exponents
+            of health and fitness
+          </li>
+          <li>
+            To use a multi-disciplinary approach at addressing our clients’
+            needs
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="aboutus-right-side">
-        <div class="left-align">
-          MISSION
-            To develop into Singapore’s premier Physiotherapy, Exercise & Sport science facility that is committed to
-            the enhancement of the health and functional performance of all of our clients, with the use of
-            evidence-based practices and utmost professionalism.
+      <div class="left-align">
+        <div class="award">MISSION</div>
 
+        To develop into Singapore’s premier Physiotherapy, Exercise & Sport
+        science facility that is committed to the enhancement of the health and
+        functional performance of all of our clients, with the use of
+        evidence-based practices and utmost professionalism.
 
-         VISION
-            To provide a holistic health and fitness conditioning service which enhances the quality of life and
-            functional performance of the general population and individuals with specialized goals. We differentiate
-            ourselves by ensuring that our treatments are designed and delivered by highly qualified and experienced
-            health and fitness professionals.
+        <div class="award" #whatwedo>VISION</div>
 
-          </div>
+        To provide a holistic health and fitness conditioning service which
+        enhances the quality of life and functional performance of the general
+        population and individuals with specialized goals. We differentiate
+        ourselves by ensuring that our treatments are designed and delivered by
+        highly qualified and experienced health and fitness professionals.
       </div>
+    </div>
   </div>
-
 </div>
 
+<div class="ourservices">
+  <div class="row1">
+    <div class="prod-head">
+      OUR SERVICES
+    </div>
+  </div>
 
+  <div class="flip-card" *ngFor="let slide of services">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <p class="title-exerc">{{ slide.title }}</p>
 
+        <img
+          src="{{ slide.src }}"
+          alt="{{ slide.alt }}"
+          style="width:250px;height:250px;"
+        />
 
-<div class="what-we-do" #whatwedo>
+        <div class="enquiry">Read More</div>
+      </div>
+      <div class="flip-card-back">
+        <div class="text-style" [innerHTML]="slide.desc"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="what-we-do">
   <div class="head">
     TREATMENTS
   </div>
@@ -346,22 +317,26 @@
     Treatments we do in Hallmark Physiotherapy
   </div>
   <div class="wrap-1">
-    <input type="checkbox" id="tab-1" name="tabs">
-    <label for="tab-1">
-      <div class="left-align">Manual therapy </div>
-      <div class="cross"></div>
+    <input type="checkbox" id="tab-1" name="tabs" />
+    <label for="tab-1" class="theme-color">
+      <div class="left-align theme-color">Manual therapy</div>
+      <div class="cross theme-color"></div>
     </label>
     <div class="content">
       <div class="img">
-        <img src="../../assets/images/manual.png " alt="Avatar" style="width:100%">
+        <img
+          src="../../assets/images/manual.png "
+          alt="Avatar"
+          style="width:100%"
+        />
       </div>
       <div class="left-align">
-        Manual therapy is a clinical approach utilizing skilled, specific hands-on techniques, with the benefits as
-        follows :
+        Manual therapy is a clinical approach utilizing skilled, specific
+        hands-on techniques, with the benefits as follows :
         <ul class="a">
           <li>
-            Manipulation/mobilization to diagnose and treat soft tissues and joint structures for the purpose of
-            modulating pain.
+            Manipulation/mobilization to diagnose and treat soft tissues and
+            joint structures for the purpose of modulating pain.
           </li>
           <li>
             Increasing range of motion (ROM).
@@ -373,73 +348,83 @@
             Inducing relaxation;
           </li>
           <li>
-            Improving contractile and non-contractile tissue repair, extensibility, and/or stability.
+            Improving contractile and non-contractile tissue repair,
+            extensibility, and/or stability.
           </li>
           <li>
             Facilitating movement and improving function.
           </li>
           <li>
-            * It can also be defined as procedures by which the hands directly contact the body to treat the
-            articulations and/or soft tissues.
+            * It can also be defined as procedures by which the hands directly
+            contact the body to treat the articulations and/or soft tissues.
           </li>
         </ul>
       </div>
-
-
     </div>
   </div>
 
   <div class="wrap-2">
-    <input type="checkbox" id="tab-2" name="tabs">
+    <input type="checkbox" id="tab-2" name="tabs" />
     <label for="tab-2">
-      <div class="left-align">Ultrasound</div>
+      <div class="left-align theme-color">Ultrasound</div>
       <div class="cross"></div>
     </label>
     <div class="content">
       <div class="img">
-        <img src="../../assets/images/ultrasound.png " alt="Avatar" style="width:100%">
+        <img
+          src="../../assets/images/ultrasound.png "
+          alt="Avatar"
+          style="width:100%"
+        />
       </div>
       <div class="left-align">
-        Ultrasound is a method of stimulating the tissue beneath the skin’s surface using very high frequency sound
-        waves.
+        Ultrasound is a method of stimulating the tissue beneath the skin’s
+        surface using very high frequency sound waves.
         <p>There are three primary benefits to ultrasound.:</p>
         <ul class="a">
           <li>
-            The first is the speeding up of the healing process from the increase in blood flow in the treated area.
+            The first is the speeding up of the healing process from the
+            increase in blood flow in the treated area.
           </li>
           <li>
-            The second is the decrease in pain from the reduction of swelling and edema.
+            The second is the decrease in pain from the reduction of swelling
+            and edema.
           </li>
           <li>
-            The third is the gentle massage of muscles tendons and/ or ligaments in the treated area because no strain
-            is added and any scar tissue is softened.
+            The third is the gentle massage of muscles tendons and/ or ligaments
+            in the treated area because no strain is added and any scar tissue
+            is softened.
           </li>
-
         </ul>
       </div>
-
-
     </div>
   </div>
 
-
   <div class="wrap-3">
-    <input type="checkbox" id="tab-3" name="tabs">
+    <input type="checkbox" id="tab-3" name="tabs" />
     <label for="tab-3">
-      <div class="left-align">Interferential therapy</div>
+      <div class="left-align theme-color">Interferential therapy</div>
       <div class="cross"></div>
     </label>
     <div class="content">
       <div class="img">
-        <img src="../../assets/images/Interferential-therapy.png " alt="Avatar" style="width:100%">
+        <img
+          src="../../assets/images/Interferential-therapy.png "
+          alt="Avatar"
+          style="width:100%"
+        />
       </div>
       <div class="left-align">
-        It uses a mid-frequency electrical signal to treat muscular spasms and strains.
+        It uses a mid-frequency electrical signal to treat muscular spasms and
+        strains.
 
-
-        <p>The current produces a massaging effect over the affected area at periodic intervals, and this stimulates the
-          secretion of endorphins, the body’s natural pain relievers, thus relaxing strained muscles and promoting soft
-          tissue healing. Its use is contraindicated if the affected area has wounds, cuts or infections.</p>
+        <p>
+          The current produces a massaging effect over the affected area at
+          periodic intervals, and this stimulates the secretion of endorphins,
+          the body’s natural pain relievers, thus relaxing strained muscles and
+          promoting soft tissue healing. Its use is contraindicated if the
+          affected area has wounds, cuts or infections.
+        </p>
         <p>IFT is used in four clinical applications, to:</p>
         <ul class="a">
           <li>
@@ -454,327 +439,337 @@
           <li>
             Reduce edema
           </li>
-
         </ul>
       </div>
-
-
     </div>
   </div>
 
-
   <div class="wrap-4">
-    <input type="checkbox" id="tab-4" name="tabs">
+    <input type="checkbox" id="tab-4" name="tabs" />
     <label for="tab-4">
-      <div class="left-align">Cryotherapy</div>
+      <div class="left-align theme-color">Cryotherapy</div>
       <div class="cross"></div>
     </label>
     <div class="content">
       <div class="img">
-        <img src="../../assets/images/cryotherapy.png " alt="Avatar" style="width:100%">
+        <img
+          src="../../assets/images/cryotherapy.png "
+          alt="Avatar"
+          style="width:100%"
+        />
       </div>
       <div class="left-align">
-        Cryotherapy is the local or general use of low temperatures in medical therapy.
-
-
+        Cryotherapy is the local or general use of low temperatures in medical
+        therapy.
 
         <ul class="a">
           <li>
-            Cryotherapy is used to treat a variety of benign and malignant lesions.
+            Cryotherapy is used to treat a variety of benign and malignant
+            lesions.
           </li>
           <li>
-            The term “cryotherapy” comes from the Greek cryo meaning cold, and therapy meaning cure.
+            The term “cryotherapy” comes from the Greek cryo meaning cold, and
+            therapy meaning cure.
           </li>
           <li>
             Cryotherapy has been used as early as the seventeenth century.
           </li>
           <li>
-            Its goal is to decrease cellular metabolism increase cellular survival, decrease inflammation, decrease pain
-            and spasm, promote vasoconstriction, and when using extreme temperatures, to destroy cells by crystallizing
-            the cytosol.
+            Its goal is to decrease cellular metabolism increase cellular
+            survival, decrease inflammation, decrease pain and spasm, promote
+            vasoconstriction, and when using extreme temperatures, to destroy
+            cells by crystallizing the cytosol.
           </li>
-
         </ul>
       </div>
-
-
     </div>
   </div>
 
-
   <div class="wrap-5">
-    <input type="checkbox" id="tab-5" name="tabs">
+    <input type="checkbox" id="tab-5" name="tabs" />
     <label for="tab-5">
-      <div class="left-align">Mechanical traction</div>
+      <div class="left-align theme-color">Mechanical traction</div>
       <div class="cross"></div>
     </label>
     <div class="content">
       <div class="img">
-        <img src="../../assets/images/mechanical.png " alt="Avatar" style="width:100%">
+        <img
+          src="../../assets/images/mechanical.png "
+          alt="Avatar"
+          style="width:100%"
+        />
       </div>
       <div class="left-align">
-        Mechanical traction is a term that describes the relief of pressure on one or many spinal disc and pinched
-        nerves (neural impingement) of the spinal column.
-
-
+        Mechanical traction is a term that describes the relief of pressure on
+        one or many spinal disc and pinched nerves (neural impingement) of the
+        spinal column.
 
         <ul class="a">
           <li>
-            Spinal traction can be achieved non-surgically and is used to treat conditions that result in chronic back
-            pain such as disc bulge, disc herniation, sciatica, spinal stenosis, and isthmic and degenerative
+            Spinal traction can be achieved non-surgically and is used to treat
+            conditions that result in chronic back pain such as disc bulge, disc
+            herniation, sciatica, spinal stenosis, and isthmic and degenerative
             spondylolisthesis.
           </li>
           <li>
-            spinal traction is achieved through the use of a mechanical traction device, which reduces the body’s
-            natural propensity to resist external force and/or generate muscle spasm.
+            spinal traction is achieved through the use of a mechanical traction
+            device, which reduces the body’s natural propensity to resist
+            external force and/or generate muscle spasm.
           </li>
           <li>
             This Mechanical traction device reduces intradiscal pressure.
           </li>
-
-
         </ul>
       </div>
-
-
     </div>
   </div>
-
 
   <div class="wrap-6">
-    <input type="checkbox" id="tab-6" name="tabs">
+    <input type="checkbox" id="tab-6" name="tabs" />
     <label for="tab-6">
-      <div class="left-align">Aqua Jogging</div>
+      <div class="left-align theme-color">Aqua Jogging</div>
       <div class="cross"></div>
     </label>
     <div class="content">
       <div class="img">
-        <img src="../../assets/images/aqua.png " alt="Avatar" style="width:100%">
+        <img
+          src="../../assets/images/aqua.png "
+          alt="Avatar"
+          style="width:100%"
+        />
       </div>
       <div class="left-align">
-        Aqua Jogging started in America as an exercise method for pre- and post-surgery patients, it has proven a very
-        good form of exercise for elderly people and overweight people because of its low impact to the muscles and its
-        effectiveness due to the water resistance.
-
-
+        Aqua Jogging started in America as an exercise method for pre- and
+        post-surgery patients, it has proven a very good form of exercise for
+        elderly people and overweight people because of its low impact to the
+        muscles and its effectiveness due to the water resistance.
 
         <ul class="a">
           <li>
-            This combination avoids muscle soreness, stress fractures and aching joints. Aqua jogging requires the use
-            of a swimming pool.
+            This combination avoids muscle soreness, stress fractures and aching
+            joints. Aqua jogging requires the use of a swimming pool.
           </li>
           <li>
-            To start aqua jogging, an individual needs only swimming wear and an aqua jogging belt.
+            To start aqua jogging, an individual needs only swimming wear and an
+            aqua jogging belt.
           </li>
           <li>
-            The belt helps with maintaining the proper upright position and supports you in the water.
+            The belt helps with maintaining the proper upright position and
+            supports you in the water.
           </li>
           <li>
-            The aqua jogging technique is not difficult but use of the belt is very important.
+            The aqua jogging technique is not difficult but use of the belt is
+            very important.
           </li>
-
         </ul>
       </div>
-
-
     </div>
   </div>
 
-
   <div class="wrap-7">
-    <input type="checkbox" id="tab-7" name="tabs">
+    <input type="checkbox" id="tab-7" name="tabs" />
     <label for="tab-7">
-      <div class="left-align">Therapeutic Taping/ Kinesio Tape</div>
+      <div class="left-align theme-color">Therapeutic Taping/ Kinesio Tape</div>
       <div class="cross"></div>
     </label>
     <div class="content">
       <div class="img">
-        <img src="../../assets/images/therapeutic.png " alt="Avatar" style="width:100%">
+        <img
+          src="../../assets/images/therapeutic.png "
+          alt="Avatar"
+          style="width:100%"
+        />
       </div>
       <div class="left-align">
-        Therapeutic tape is an elastic cotton strip with an acrylic adhesive that is used for treating athletic injuries
-        and a variety of physical disorders.
-
-
+        Therapeutic tape is an elastic cotton strip with an acrylic adhesive
+        that is used for treating athletic injuries and a variety of physical
+        disorders.
 
         <ul class="a">
           <li>
-            The tape has a beneficial role in improving strength, range of motion in certain injured cohorts and force
-            sense error compared with other elastic tapes.
+            The tape has a beneficial role in improving strength, range of
+            motion in certain injured cohorts and force sense error compared
+            with other elastic tapes.
           </li>
           <li>
-            Additionally, the tape is claimed to lift the skin, increasing the space below it, and increasing blood flow
-            and circulation of lymphatic fluids (swelling).
+            Additionally, the tape is claimed to lift the skin, increasing the
+            space below it, and increasing blood flow and circulation of
+            lymphatic fluids (swelling).
           </li>
           <li>
-            This increase in the interstitial space is said to lead to less pressure on the body’s nociceptors, which
-            detect pain, and to stimulate mechanoreceptors, to improve overall joint proprioception.
+            This increase in the interstitial space is said to lead to less
+            pressure on the body’s nociceptors, which detect pain, and to
+            stimulate mechanoreceptors, to improve overall joint proprioception.
+          </li>
+          <li>
+            The tape is applied with the affected muscle in a stretched
+            position, taping from the origin of the muscle to the insertion
+            point.
+          </li>
 
-          </li>
           <li>
-            The tape is applied with the affected muscle in a stretched position, taping from the origin of the muscle
-            to the insertion point.
+            Once applied, it is rubbed to activate the pressure-sensitive
+            adhesive.
           </li>
-
-          <li>
-            Once applied, it is rubbed to activate the pressure-sensitive adhesive.
-          </li>
-
         </ul>
       </div>
-
-
     </div>
   </div>
 
   <div class="wrap-8">
-    <input type="checkbox" id="tab-8" name="tabs">
+    <input type="checkbox" id="tab-8" name="tabs" />
     <label for="tab-8">
-      <div class="left-align">Insole</div>
+      <div class="left-align theme-color">Insole</div>
       <div class="cross"></div>
     </label>
     <div class="content">
       <div class="img">
-        <img src="../../assets/images/insole.png " alt="Avatar" style="width:100%">
+        <img
+          src="../../assets/images/insole.png "
+          alt="Avatar"
+          style="width:100%"
+        />
       </div>
       <div class="left-align">
-        Insole is an external support which provide cushioning and shock absorption.
-
-
+        Insole is an external support which provide cushioning and shock
+        absorption.
 
         <ul class="a">
           <li>
-            Heel pain and knee pain are caused by rolling over of the foot (excess pronation).
+            Heel pain and knee pain are caused by rolling over of the foot
+            (excess pronation).
           </li>
           <li>
-            As the foot pronates, the arch collapses and puts stretch and strain on the ligaments running from heel to
-            the toes causing the heel pain, while the lower leg( tibia) internally rotates, putting forces on the knee
-            cap and weakening the muscle structures, causing knee pain.
+            As the foot pronates, the arch collapses and puts stretch and strain
+            on the ligaments running from heel to the toes causing the heel
+            pain, while the lower leg( tibia) internally rotates, putting forces
+            on the knee cap and weakening the muscle structures, causing knee
+            pain.
           </li>
           <li>
-            This may develop a bony growth right in the centre of the heel which is known as heel spur.
+            This may develop a bony growth right in the centre of the heel which
+            is known as heel spur.
+          </li>
+          <li>
+            Proper insole usage re-align the foot and lower limb. It reduces the
+            stretch forces on the ligaments of the foot and reduce internal
+            rotation of the leg and takes away this common cause of heel pain &
+            knee pain.
+          </li>
 
-          </li>
           <li>
-            Proper insole usage re-align the foot and lower limb. It reduces the stretch forces on the ligaments of the
-            foot and reduce internal rotation of the leg and takes away this common cause of heel pain & knee pain.
+            Orthopaedic conditions which may need the use of insoles are: <br />
+            heel spur, plantar fasciitis, patello-femoral pain, lumbo-sacral
+            pain, flat feet, corns, bunions, shin pain & achilles tendonitis.
           </li>
-
-          <li>
-            Orthopaedic conditions which may need the use of insoles are: <br>
-            heel spur, plantar fasciitis, patello-femoral pain, lumbo-sacral pain, flat feet, corns, bunions, shin pain
-            & achilles tendonitis.
-          </li>
-
         </ul>
-
       </div>
-
-
     </div>
   </div>
 
-  <div class="wrap-9">
-      <input type="checkbox" id="tab-9" name="tabs">
-      <label for="tab-9">
-        <div class="left-align">FITNESS </div>
-        <div class="cross"></div>
-      </label>
-      <div class="content">
-        <div class="img">
-          <img src="../../assets/images/fitness.png " alt="Avatar" style="width:100%">
-        </div>
-        <div class="left-align">
-  
-          <ul class="a">
-            <li>
-              The Hallmark Physiotherapy is able to provide a comprehensive and individually tailored health and fitness
-              service to our clients due to the expertise and knowledge-base of our staff.
-            </li>
-            <li>
-              Our programs will be designed based on up-to-date evidence-based practices combined with the most
-              professionalism.
-            </li>
-            <li>
-              Clients will also be able to select between individual or corporate training packages with us.
-            </li>
-  
-          </ul>
-        </div>
-  
-  
-      </div>
-    </div>
 
 </div>
 
+<div class="exercises">
+  <div class="head">
+    EXERCISES
+  </div>
+  <div class="head-caption">
+    Consult your physiotherapist before attempting any of these exercises. If
+    you experience any pain or difficulty with any exercises, please stop and
+    consult your physiotherapist immediately
+  </div>
+  <div class="exercise-detail">
+    <div class="left exerc">
+      <div class="exerc-det">Knee exercises</div>
+      <div class="exerc-det-view" (click)="onClick('knee.pdf')">view</div>
+    </div>
 
+    <div class="right exerc">
+      <div class="exerc-det">Neck and Upper Back Exercises</div>
+      <div class="exerc-det-view" (click)="onClick('neckandupperback.pdf')">
+        view
+      </div>
+    </div>
 
+    <div class="left exerc">
+      <div class="exerc-det">Lower Back Exercises</div>
+      <div class="exerc-det-view" (click)="onClick('lowerback.pdf')">view</div>
+    </div>
 
-<div  #target>
+    <div class="right exerc">
+      <div class="exerc-det">Ankle Exercises</div>
+      <div class="exerc-det-view" (click)="onClick('ankle.pdf')">view</div>
+    </div>
 
-    <div class="slide-show">
+    <div class="left exerc">
+      <div class="exerc-det">Shoulder Exercises</div>
+      <div class="exerc-det-view" (click)="onClick('shoulder.pdf')">view</div>
+    </div>
+
+    <div class="right exerc">
+      <div class="exerc-det">Stretching Exercises</div>
+      <div class="exerc-det-view" (click)="onClick('stretching.pdf')">view</div>
+    </div>
+
+    <div class="left exerc">
+      <div class="exerc-det">Fitness Training Exercises</div>
+      <div class="exerc-det-view" (click)="onClick('fitnesstraining.pdf')">
+        view
+      </div>
+    </div>
+
+    <div class="right exerc noborder"></div>
+  </div>
+</div>
+
+<div #testimonials class="filler">
+  &nbsp;
+</div>
+
+<div #products>
+  <div class="slide-show">
     <div class="test-head">
-       Testimonials
-     </div>
- 
- 
-    
- 
-     <owl-carousel-o [options]="customOptions">
- 
-       <ng-container *ngFor="let slide of slidesTestimony">
-         <ng-template carouselSlide [id]="slide.id">
-           <div class="testimonial-slide">
- 
-             <blockquote><p class="quotation"> 
-                 {{slide.title}}</p>
-               <footer>— {{slide.client}}</footer>
-               </blockquote> 
- 
-           </div>
- 
- 
-         </ng-template>
- 
-       </ng-container>
- 
-     </owl-carousel-o>
- 
-   </div>
- </div>
+      Testimonials
+    </div>
 
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of slidesTestimony">
+        <ng-template carouselSlide [id]="slide.id">
+          <div class="testimonial-slide">
+            <blockquote>
+              <p class="quotation" [innerHTML]="slide.title">
+              </p>
+              <footer>— {{ slide.client }}</footer>
+            </blockquote>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>
 
-
-<div class="products" #products>
-
+<div class="products">
   <div class="row1">
     <div class="prod-head">
-      Products
+      PRODUCTS
     </div>
     <div class="prod-head-caption">
       Products available at Hallmark Physiotherapy.
     </div>
-
   </div>
 
-  
-    
-      <div class="card" *ngFor="let slide of productStore">
-        <h3>{{slide.title}}</h3>
-        <img src={{slide.src}} alt="{{slide.alt}}" style="width:100%">
-        <p class="enquiry">Send Enquiry</p>
-        
-      </div>
-    
+  <div class="card" *ngFor="let slide of productStore">
+    <h3 class="title">{{ slide.title }}</h3>
+    <img src="{{ slide.src }}" alt="{{ slide.alt }}" style="width:100%" />
 
-
-  
+    <div class="enquiry">Send Enquiry</div>
+  </div>
 </div>
 
-
-<div class="contact-us" *ngIf="country === 'sg' ">
-  <div class="contactus-head">
+<div #contactus class="filler"></div>
+<div class="contact-us" *ngIf="country === 'sg'">
+  <div class="contactus-head" style="color: green; font-size: 1.6rem;">
     CONTACT US
   </div>
   <div class="contact-section">
@@ -808,48 +803,33 @@
         <p class="timings">
           Saturday : 8am – 1pm
         </p>
-
       </div>
-      <p>
+
+
+
+      <div>
         <button class="w3-button w3-green w3-round-xxlarge appoint" (click)="appointment()">
-          MAKE AN APPOINTMENT
+          Make an Appointment
         </button>
-      </p>
+      </div>
 
     </div>
     <div class="right-contactus">
-      <div class="mapouter">
-        <div class="gmap_canvas"><iframe width="527" height="265" id="gmap_canvas"
-            src="https://maps.google.com/maps?q=320%20Thomson%20Road%2C%20Singapore%20307663&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Google Maps Generator by <a
-            href="https://www.embedgooglemap.net">embedgooglemap.net</a></div>
-        <style>
-          .mapouter {
-            position: relative;
-            text-align: right;
-            height: 265px;
-            width: 527px;
-          }
-
-          .gmap_canvas {
-            overflow: hidden;
-            background: none !important;
-            height: 265px;
-            width: 527px;
-          }
-
-        </style>
-      </div>
+      <iframe
+        class="frame"
+        id="gmap_canvas"
+        src="https://maps.google.com/maps?q=320%20Thomson%20Road%2C%20Singapore%20307663&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        frameborder="0"
+        scrolling="no"
+        marginheight="0"
+        marginwidth="0"
+      ></iframe>
     </div>
   </div>
-
-
-
 </div>
 
-
-<div class="contact-us" *ngIf="country === 'my' ">
-  <div class="contactus-head">
+<div class="contact-us" *ngIf="country === 'my'">
+  <div class="contactus-head" style="color: green; font-size: 1.6rem;">
     CONTACT US
   </div>
   <div class="contact-section">
@@ -859,8 +839,11 @@
       </div>
       <div>
         <i class="fas fa-map-marker-alt fa-xs"></i>
-        Address : <span class="light"> Hallmark Physiotherapy Myanmar, 290 D4, Uwisara Road,Kamaryut Township, Yangon,
-          Myanmar</span>
+        Address :
+        <span class="light">
+          Hallmark Physiotherapy Myanmar, 290 D4, Uwisara Road,Kamaryut
+          Township, Yangon, Myanmar</span
+        >
       </div>
       <div>
         <i class="fas fa-phone fa-xs"></i>
@@ -881,43 +864,25 @@
         <p class="timings">
           Saturday : 9am – 1pm
         </p>
-
       </div>
       <p>
-        <button class="w3-button w3-green w3-round-xxlarge appoint" (click)="appointment()">
-          MAKE AN APPOINTMENT
+        <button class="w3-button w3-green w3-round-xxlarge appoint">
+          Send Enquiry
         </button>
       </p>
-
     </div>
     <div class="right-contactus">
-      <div class="mapouter">
-        <div class="gmap_canvas"><iframe width="527" height="265" id="gmap_canvas"
-            src="https://maps.google.com/maps?q=Hallmark%20Physiotherapy%20Myanmar%2C%20290%20D4%2C%20Uwisara%20Road%2CKamaryut%20Township%2C%20Yangon%2C%20Myanmar&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Google Maps Generator by <a
-            href="https://www.embedgooglemap.net">embedgooglemap.net</a></div>
-        <style>
-          .mapouter {
-            position: relative;
-            text-align: right;
-            height: 265px;
-            width: 527px;
-          }
-
-          .gmap_canvas {
-            overflow: hidden;
-            background: none !important;
-            height: 265px;
-            width: 527px;
-          }
-
-        </style>
-      </div>
+      <iframe
+        class="frame"
+        id="gmap_canvas"
+        src="https://maps.google.com/maps?q=Hallmark%20Physiotherapy%20Myanmar%2C%20290%20D4%2C%20Uwisara%20Road%2CKamaryut%20Township%2C%20Yangon%2C%20Myanmar&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        frameborder="0"
+        scrolling="no"
+        marginheight="0"
+        marginwidth="0"
+      ></iframe>
     </div>
   </div>
-
-
-
 </div>
 
 <div class="footer">
@@ -925,9 +890,5 @@
 </div>
 
 
-
-
-<div id="fixedbutton" (click)="scroll(top)">
-
-  <i class="fas fa-arrow-circle-up fa-2x"></i>
-</div>
+<div *ngIf="topFloat === 'true'"  (click)="scrollTop()" style="cursor: pointer"
+class="scroll-top on"></div>
