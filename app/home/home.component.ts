@@ -2,6 +2,9 @@ import { Component, OnInit, NgModule, ViewChild, ElementRef, ChangeDetectorRef, 
 import { HostListener } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { Inject, PLATFORM_ID } from '@angular/core';
+
 
 @Component({
   selector: 'app-home',
@@ -55,7 +58,8 @@ export class HomeComponent implements OnInit {
   @ViewChild('contactus', { static: false }) contactus: ElementRef;
 
 
-  constructor(private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef) {
+  constructor(private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef,
+              @Inject(PLATFORM_ID) private platformId: any) {
     this.slidesStore = [
       {src: 'assets/images/Slide13.jpg', id: '1', alt: 'image1', title: 'Stop battling your pain. You need physiotherapy'},
       {src: 'assets/images/Slide31.jpg', id: '2', alt: 'image2', title: 'Recovery is not easy but worth it'},
@@ -105,7 +109,7 @@ export class HomeComponent implements OnInit {
         <span style="color:darkgreen;">&#9658;</span> Our programs will be designed based on up-to-date evidence-based practices combined with the most professionalism.  <br>
         <span style="color:darkgreen;">&#9658;</span> Clients will also be able to select between individual or corporate training packages with us.`),
       title: 'Fitness'},
-      {src: 'assets/images/Interferential-therapy.png', id: '4', alt: 'Other conditions / services',
+      {src: 'assets/images/bunion1.png', id: '4', alt: 'Other conditions / services',
       desc: sanitizer.bypassSecurityTrustHtml(`
       <span style="color:darkgreen;">&#9658;</span> We provide a variety of services, not just for patients who are injured or in pain, but also conservative treatments for foot deformity. (eg. Bunion)`),
       title: 'Other conditions / services'},
@@ -116,10 +120,12 @@ export class HomeComponent implements OnInit {
 
   }
   ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
     const navbar = document.getElementById('myTopnav');
     this.stickyval = navbar.offsetTop;
 
     console.log(' height ' + this.stickyval);
+    }
   }
 
   // const number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;

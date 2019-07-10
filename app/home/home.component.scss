@@ -1451,6 +1451,7 @@ footer {
   font-weight: 400;
   font-size: 1.2rem;
   padding: 1rem;
+  min-height: 84px;
 
 }
 
@@ -1534,9 +1535,19 @@ footer {
   width: 280px;
   height: 280px;
 
-
   perspective: 1000px;
   margin-bottom: 10rem;
+
+
+
+  @media screen and (min-width: 1025px) and (max-width: 1190px) {
+    width: 220px !important;
+    height: 220px !important;
+  }
+
+
+
+
 }
 
 .flip-card-inner {
@@ -1578,7 +1589,7 @@ footer {
 .ourservices {
   display: grid;
   padding: 1rem 2rem;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
 
   @media screen and (max-width: 768px) {
@@ -1589,7 +1600,7 @@ footer {
     grid-template-columns: 1fr 1fr;
   }
 
-  @media screen and (min-width: 101px) and (max-width: 500px) {
+  @media screen and (min-width: 101px) and (max-width: 767px) {
     grid-template-columns: 1fr;
   }
 

@@ -18,7 +18,7 @@ import { EnquiryComponent } from './enquiry/enquiry.component';
 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     CarouselModule,
     AppRoutingModule
